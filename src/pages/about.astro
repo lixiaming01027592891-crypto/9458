@@ -1,0 +1,165 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Gallery from '@/components/Gallery.astro';
+import CTA from '@/components/CTA.astro';
+
+const title = '關於我們 | 9458專業搬家 - 台南在地搬家公司';
+const description = '了解9458專業搬家的故事。我們是台南在地經營多年的專業搬家公司，擁有年輕有活力的團隊，老闆親自帶隊。Google 5.0星評價，值得信賴。';
+
+const values = [
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="20"/>
+      <path d="M24 14v10l7 7"/>
+      <path d="M14 24h4"/>
+      <path d="M30 24h4"/>
+      <path d="M24 10v4"/>
+    </svg>`,
+    title: '專業',
+    desc: '每位成員皆受過專業訓練，具備貨車空間規劃能力，以最少車次載運最多行李。'
+  },
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 8l-4 8h8l-4-8z"/>
+      <path d="M8 20l8 4-4-8v20h24V16l-4 8 8-4"/>
+      <path d="M16 36h16"/>
+    </svg>`,
+    title: '細心',
+    desc: '膠膜包覆、帆布防護、易碎品厚布包裹，呵護您的每一件物品，雨季特別注意防潮。'
+  },
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="24" cy="24" r="20"/>
+      <path d="M16 24l4 4 8-8"/>
+    </svg>`,
+    title: '公道',
+    desc: '價格透明合理，事先估價簽約，以公司估價單為基準記錄費用，絕不中途加價。'
+  },
+  {
+    icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 24h8l4-12 6 24 4-12h10"/>
+      <circle cx="40" cy="24" r="4"/>
+    </svg>`,
+    title: '效率',
+    desc: '年輕團隊體力充沛，做事不馬虎，認真負責，快速完成搬遷任務。'
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  
+  <main>
+    <!-- Page Header -->
+    <section class="bg-primary pt-16 pb-20 relative overflow-hidden">
+      <div class="absolute bottom-0 right-0 w-64 h-32 opacity-20">
+        <svg viewBox="0 0 256 128" fill="none" class="w-full h-full">
+          <path d="M0,64 C40,20 80,100 128,64 C176,28 216,108 256,64" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="container-main relative z-10">
+        <nav class="text-white/60 text-sm mb-4">
+          <a href="/" class="hover:text-white transition-colors">首頁</a>
+          <span class="mx-2">&gt;</span>
+          <span>關於我們</span>
+        </nav>
+        <h1 class="text-white text-3xl lg:text-4xl font-bold">關於我們</h1>
+      </div>
+    </section>
+
+    <!-- Company Intro -->
+    <section class="py-20 bg-white">
+      <div class="container-main">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Text -->
+          <div>
+            <p class="section-title">關於 9458 專業搬家</p>
+            <h2 class="text-2xl lg:text-3xl font-bold text-primary mb-6">年輕團隊，認真負責</h2>
+            <p class="text-muted text-[15px] leading-[1.8] mb-5">
+              9458專業搬家是台南在地經營多年的專業搬家公司。我們擁有年輕有活力的搬家團隊，老闆親自帶隊，做事認真負責、小心翼翼。從免費到府估價、簽訂搬遷契約、免費紙箱派送，到搬運當天的家具拆解、膠膜包覆、帆布防護、新居定位，每一個環節我們都絕不馬虎。
+            </p>
+            <p class="text-muted text-[15px] leading-[1.8]">
+              我們的服務涵蓋台南全市區，包含安平區、南區、中西區、安南區、永康區、仁德區、新化區、歸仁區、新營區等，也提供跨縣市的長途搬家服務。24小時營業，隨時為您服務。
+            </p>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-border">
+              <div>
+                <p class="text-3xl font-bold text-primary">5.0</p>
+                <p class="text-muted text-sm">Google 評分</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-primary">44+</p>
+                <p class="text-muted text-sm">五星好評</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-primary">24H</p>
+                <p class="text-muted text-sm">全年無休</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Image -->
+          <div class="relative">
+            <img 
+              src="/images/hero-mover.jpg" 
+              alt="9458專業搬家團隊"
+              class="rounded-lg shadow-xl w-full aspect-[4/3] object-cover"
+              loading="lazy"
+              width="500"
+              height="375"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="py-20 bg-surface">
+      <div class="container-main">
+        <div class="text-center mb-14">
+          <p class="section-title">核心價值</p>
+          <h2 class="section-heading">我們堅持的四大原則</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map(value => (
+            <div class="value-card bg-white rounded-lg p-7 text-center shadow-sm">
+              <div class="w-14 h-14 text-primary mx-auto mb-4">
+                <Fragment set:html={value.icon} />
+              </div>
+              <h3 class="text-lg font-bold text-primary mb-3">{value.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{value.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Gallery />
+    <CTA />
+  </main>
+  
+  <Footer />
+</Layout>
+
+<script>
+  const valueObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-6');
+        }, index * 150);
+        valueObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.value-card').forEach(card => {
+    card.classList.add('opacity-0', 'translate-y-6', 'transition-all', 'duration-500');
+    valueObserver.observe(card);
+  });
+</script>

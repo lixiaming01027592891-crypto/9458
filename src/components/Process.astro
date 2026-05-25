@@ -1,0 +1,182 @@
+---
+const steps = [
+  {
+    icon: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 10c0-3.314 2.686-6 6-6s6 2.686 6 6c0 2-1 4-3 6h-6c-2-2-3-4-3-6z"/>
+      <path d="M12 20v4h8v-4"/>
+      <path d="M14 24v4"/>
+      <path d="M18 24v4"/>
+      <path d="M8 12H4c0 2 1.5 4 4 4"/>
+      <path d="M24 12h4c0 2-1.5 4-4 4"/>
+    </svg>`,
+    title: '電話詢問及到府估價',
+    desc: '物品較少可電話報價，較多則派估價師到府免費估價，簽訂搬遷契約保障雙方權益。'
+  },
+  {
+    icon: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="6" width="24" height="20" rx="2"/>
+      <path d="M4 12h24"/>
+      <path d="M12 12v14"/>
+      <path d="M20 12v14"/>
+      <path d="M14 8h4"/>
+    </svg>`,
+    title: '免費紙箱派送',
+    desc: '簽約後安排時間派送免費紙箱，供您提前打包裝箱，搬運當天更順利。'
+  },
+  {
+    icon: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="10" width="28" height="14" rx="2"/>
+      <circle cx="8" cy="24" r="3"/>
+      <circle cx="24" cy="24" r="3"/>
+      <path d="M2 16h28"/>
+      <path d="M12 10V6h8v4"/>
+      <path d="M6 10V6h2v4"/>
+      <path d="M24 10V6h2v4"/>
+    </svg>`,
+    title: '專業到府搬遷',
+    desc: '依指定日期派專業師傅到府，家具拆解、膠膜包覆、帆布防護，全程細心搬運。'
+  },
+  {
+    icon: `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 28s-10-6.5-10-13a10 10 0 0120 0c0 6.5-10 13-10 13z"/>
+      <circle cx="16" cy="15" r="3"/>
+    </svg>`,
+    title: '新居定位服務',
+    desc: '到達新居後，依指定樓層與位置將物品定位，讓您輕鬆入住新家。'
+  }
+];
+---
+
+<section class="py-20 bg-white" id="process">
+  <div class="container-main">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <p class="section-title">完整流程</p>
+      <h2 class="section-heading">四步驟輕鬆完成搬家</h2>
+    </div>
+
+    <!-- Process Flow -->
+    <div class="relative min-h-[550px] lg:min-h-[500px]">
+      <!-- SVG Wave Path (Desktop) -->
+      <svg class="hidden lg:block absolute inset-0 w-full h-full" viewBox="0 0 1100 500" preserveAspectRatio="xMidYMid meet" fill="none">
+        <!-- Main wave -->
+        <path 
+          id="processWave"
+          d="M50,80 C200,80 250,200 400,200 C550,200 500,350 650,350 C800,350 750,200 900,200 C1000,200 1020,120 1050,120"
+          stroke="#001449"
+          stroke-width="100"
+          stroke-linecap="round"
+          fill="none"
+          class="process-wave-path"
+        />
+        <!-- Inner highlight line -->
+        <path 
+          d="M50,80 C200,80 250,200 400,200 C550,200 500,350 650,350 C800,350 750,200 900,200 C1000,200 1020,120 1050,120"
+          stroke="#002266"
+          stroke-width="2"
+          stroke-dasharray="8,8"
+          fill="none"
+          class="process-wave-line"
+        />
+      </svg>
+
+      <!-- Steps Grid -->
+      <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        {steps.map((step, index) => (
+          <div class={`process-step relative ${index % 2 === 1 ? 'lg:mt-24' : ''}`}>
+            <!-- Connector line (mobile) -->
+            {index < steps.length - 1 && (
+              <div class="lg:hidden absolute left-1/2 top-full w-0.5 h-8 bg-border -translate-x-1/2"></div>
+            )}
+            
+            <div class="bg-primary rounded-xl p-6 text-white text-center shadow-lg">
+              <!-- Step Number -->
+              <span class="inline-block w-8 h-8 bg-accent rounded-full text-sm font-bold flex items-center justify-center mx-auto mb-4">
+                {index + 1}
+              </span>
+              
+              <!-- Icon -->
+              <div class="w-12 h-12 mx-auto mb-4 text-white/90">
+                <Fragment set:html={step.icon} />
+              </div>
+              
+              <!-- Title -->
+              <h3 class="font-bold text-base mb-3">{step.title}</h3>
+              
+              <!-- Description -->
+              <p class="text-white/75 text-sm leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-wave-path {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+  }
+  
+  .process-wave-path.animate {
+    animation: drawWave 2s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  }
+  
+  .process-wave-line {
+    stroke-dasharray: 8, 8;
+    opacity: 0;
+  }
+  
+  .process-wave-line.animate {
+    animation: fadeIn 0.5s 1.5s forwards;
+  }
+
+  @keyframes drawWave {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Animate wave and steps on scroll
+  const processSection = document.getElementById('process');
+  const wavePath = document.getElementById('processWave');
+  const waveLine = document.querySelector('.process-wave-line');
+  
+  if (processSection) {
+    const processObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate wave
+          if (wavePath) wavePath.classList.add('animate');
+          if (waveLine) waveLine.classList.add('animate');
+          
+          // Animate steps
+          document.querySelectorAll('.process-step').forEach((step, index) => {
+            setTimeout(() => {
+              step.classList.add('opacity-100', 'translate-y-0');
+              step.classList.remove('opacity-0', 'translate-y-6');
+            }, 300 + index * 300);
+          });
+          
+          processObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    processObserver.observe(processSection);
+  }
+
+  // Set initial state for steps
+  document.querySelectorAll('.process-step').forEach(step => {
+    step.classList.add('opacity-0', 'translate-y-6', 'transition-all', 'duration-600');
+  });
+</script>

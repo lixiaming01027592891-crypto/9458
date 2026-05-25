@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    font-family: 'Noto Sans TC', system-ui, sans-serif;
+    color: #001449;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .container-main {
+    @apply max-w-[1200px] mx-auto px-6;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-accent text-white font-medium 
+           px-7 py-3 rounded transition-all duration-200;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white font-medium 
+           px-7 py-3 rounded border border-white/40 transition-all duration-200;
+  }
+  .btn-secondary:hover {
+    @apply bg-white/10;
+  }
+
+  .section-title {
+    @apply text-[13px] font-medium uppercase tracking-[2px] text-muted mb-2;
+  }
+
+  .section-heading {
+    @apply text-[28px] font-bold text-primary;
+  }
+
+  .nav-link {
+    @apply relative text-primary font-medium text-[15px] py-2 transition-colors duration-200;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-200;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

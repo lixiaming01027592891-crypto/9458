@@ -1,0 +1,29 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Hero from '@/components/Hero.astro';
+import Services from '@/components/Services.astro';
+import Reviews from '@/components/Reviews.astro';
+import Process from '@/components/Process.astro';
+import Gallery from '@/components/Gallery.astro';
+import CTA from '@/components/CTA.astro';
+
+const title = '9458專業搬家 | 台南搬家公司推薦 | 免費到府估價';
+const description = '台南9458專業搬家公司，Google 5.0星評價。提供住宅搬家、商業搬遷、鋼琴搬運等服務。年輕團隊、價格公道、24小時服務。免費到府估價，簽約有保障。';
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  
+  <main>
+    <Hero />
+    <Services />
+    <Reviews />
+    <Process />
+    <Gallery />
+    <CTA />
+  </main>
+  
+  <Footer />
+</Layout>

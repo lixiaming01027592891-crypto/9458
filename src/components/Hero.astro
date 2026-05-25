@@ -1,0 +1,116 @@
+---
+---
+
+<section class="relative bg-primary min-h-[85vh] overflow-hidden">
+  <!-- SVG Wave Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <svg class="absolute right-0 top-0 w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMid slice" fill="none">
+      <!-- Main wave shape -->
+      <path 
+        d="M600,0 C750,150 900,100 1000,250 C1100,400 950,500 1100,650 C1200,750 1300,700 1440,850 L1440,0 Z" 
+        fill="#002266"
+      />
+      <!-- Accent curve line -->
+      <path 
+        d="M620,0 C770,150 920,100 1020,250 C1120,400 970,500 1120,650 C1220,750 1320,700 1440,830" 
+        stroke="rgba(255,255,255,0.08)" 
+        stroke-width="2"
+        fill="none"
+      />
+    </svg>
+  </div>
+
+  <div class="container-main relative z-10 flex flex-col lg:flex-row items-center min-h-[85vh] py-16 lg:py-0">
+    <!-- Left Text Area -->
+    <div class="w-full lg:w-[45%] text-white pt-8 lg:pt-0 hero-text">
+      <!-- Service Tag -->
+      <span class="inline-block px-4 py-1.5 bg-white/15 rounded text-[13px] font-medium tracking-wide mb-6">
+        24小時服務 · 全年無休
+      </span>
+      
+      <!-- Main Title -->
+      <h1 class="text-[32px] lg:text-[42px] font-bold leading-[1.25] mb-5">
+        安心搬遷<br/>從9458開始
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="text-white/75 text-base max-w-[420px] mb-8 leading-relaxed">
+        台南在地專業搬家團隊，年輕有效率，價格公道透明。免費到府估價，簽約保障，讓您的每一次搬遷都安心無憂。
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap gap-4">
+        <a href="/contact" class="btn-primary">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          立即預約免費估價
+        </a>
+        <a href="/services" class="btn-secondary">
+          觀看我們的服務
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Image Area -->
+    <div class="w-full lg:w-[55%] mt-10 lg:mt-0 hero-image">
+      <div class="relative lg:ml-auto lg:max-w-[600px]">
+        <div class="rounded-bl-[80px] lg:rounded-bl-[120px] overflow-hidden shadow-2xl">
+          <img 
+            src="/images/hero-mover.jpg" 
+            alt="9458專業搬家師傅正在細心包裝家具" 
+            class="w-full h-auto object-cover aspect-[4/3]"
+            loading="eager"
+            width="600"
+            height="450"
+          />
+          <!-- Subtle blue overlay -->
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent pointer-events-none"></div>
+        </div>
+        
+        <!-- Floating badge -->
+        <div class="absolute -bottom-4 -left-4 lg:-left-8 bg-white rounded-lg shadow-lg p-4 flex items-center gap-3">
+          <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-primary font-bold text-lg leading-none">5.0</p>
+            <p class="text-muted text-xs">Google 評價</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-white/50">
+    <span class="text-xs">向下探索</span>
+    <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero-text {
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: slideInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+  
+  .hero-image {
+    opacity: 0;
+    transform: translateX(40px);
+    animation: slideInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  }
+
+  @keyframes slideInLeft {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes slideInRight {
+    to { opacity: 1; transform: translateX(0); }
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "9458專業搬家 - 台南在地專業搬家公司，年輕團隊、價格公道、服務細心。提供住宅搬家、商業搬遷、特殊物品搬運等服務。24小時營業，免費到府估價。"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://9458moving.com');
+---
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="台南搬家, 專業搬家, 搬家公司, 住宅搬家, 商業搬遷, 鋼琴搬運, 安平區搬家, 免費估價" />
+  <meta name="author" content="9458專業搬家" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content="https://9458moving.com/images/og-image.jpg" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MovingCompany",
+    "name": "9458專業搬家",
+    "description": description,
+    "url": "https://9458moving.com",
+    "telephone": "+886-977-184-903",
+    "email": "",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "建平一街190巷16號",
+      "addressLocality": "安平區",
+      "addressRegion": "台南市",
+      "postalCode": "70846",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "22.9986",
+      "longitude": "120.1601"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "44"
+    },
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "City",
+      "name": "台南市"
+    },
+    "sameAs": [
+      "https://line.me/ti/p/q0wNmcOv8D",
+      "https://www.facebook.com/354589795267116",
+      "https://www.instagram.com/zxc7370808"
+    ]
+  })} />
+  
+  <title>{title}</title>
+  
+  <link rel="stylesheet" href="/src/styles/global.css" />
+</head>
+<body class="bg-white">
+  <slot />
+  
+  <!-- Back to top button -->
+  <button 
+    id="backToTop" 
+    class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg 
+           flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50
+           hover:bg-accent"
+    aria-label="返回頂部"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+    </svg>
+  </button>
+  
+  <script>
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
+</body>
+</html>

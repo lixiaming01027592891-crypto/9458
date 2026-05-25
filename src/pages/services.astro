@@ -1,0 +1,137 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import CTA from '@/components/CTA.astro';
+
+const title = '服務項目 | 9458專業搬家 - 台南搬家公司';
+const description = '9458專業搬家提供完整的搬家服務：住宅搬家、商業搬遷、家具拆裝、鋼琴搬運、特殊物品搬運、自助搬家、廢棄物清運等。免費到府估價。';
+
+const serviceCategories = [
+  {
+    title: '住宅搬家',
+    description: '無論是套房、公寓還是透天厝，我們都能提供專業的住宅搬家服務。從精緻搬家到經濟型搬家，依照您的需求量身打造最適合的搬遷方案。',
+    items: ['套房搬家', '大樓搬家', '透天厝搬家', '精緻搬家', '經濟型搬家', '長途搬家', '夜間搬遷'],
+    image: '/images/gallery-truck.jpg'
+  },
+  {
+    title: '商業搬遷',
+    description: '專業的商業搬遷服務，為您的企業搬遷提供完整的規劃與執行。最小化營業中斷時間，確保辦公設備與文件資料安全送達新址。',
+    items: ['公司搬遷', '辦公室搬家', '商家搬遷', '工廠搬家'],
+    image: '/images/gallery-bookshelf.jpg'
+  },
+  {
+    title: '家具服務',
+    description: '專業的家具拆裝與定位服務，讓您的家具安全無虞地在新家重新組裝定位。',
+    items: ['家具拆裝定位', '系統床組拆解組裝', 'L型沙發拆裝'],
+    image: '/images/gallery-sofa-lshape.jpg'
+  },
+  {
+    title: '特殊物品搬運',
+    description: '鋼琴、冰箱、書櫃等特殊物品需要專業的搬運技術與器材，我們擁有豐富經驗與專業設備，確保您的貴重物品安全送達。',
+    items: ['鋼琴載運及包裝防護', '冰箱背負搬運', '書櫃樓梯搬運', '易碎品搬運'],
+    image: '/images/gallery-piano.jpg'
+  },
+  {
+    title: '其他服務',
+    description: '除了一般搬家服務外，我們也提供多種彈性選擇，滿足各種搬運需求。',
+    items: ['自助搬家', '廢棄物清運', '人力搬家', '單一家具配送'],
+    image: '/images/gallery-sofa-stairs.jpg'
+  },
+  {
+    title: '免費加值服務',
+    description: '我們提供多項免費加值服務，讓您的搬家過程更加順利與安心。',
+    items: ['免費到府估價', '簽訂搬遷契約', '免費紙箱派送'],
+    image: '/images/gallery-fridge.jpg'
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  
+  <main>
+    <!-- Page Header -->
+    <section class="bg-primary pt-16 pb-20 relative overflow-hidden">
+      <div class="absolute bottom-0 right-0 w-64 h-32 opacity-20">
+        <svg viewBox="0 0 256 128" fill="none" class="w-full h-full">
+          <path d="M0,64 C40,20 80,100 128,64 C176,28 216,108 256,64" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="container-main relative z-10">
+        <nav class="text-white/60 text-sm mb-4">
+          <a href="/" class="hover:text-white transition-colors">首頁</a>
+          <span class="mx-2">&gt;</span>
+          <span>服務項目</span>
+        </nav>
+        <h1 class="text-white text-3xl lg:text-4xl font-bold">服務項目</h1>
+      </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="py-20 bg-white">
+      <div class="container-main">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {serviceCategories.map((service, index) => (
+            <div class={`service-card flex flex-col sm:flex-row bg-white border border-border rounded-lg overflow-hidden hover:border-primary transition-colors duration-300 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <!-- Image -->
+              <div class="sm:w-[40%] flex-shrink-0">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  class="w-full h-full object-cover aspect-[16/10] sm:aspect-auto"
+                  loading="lazy"
+                  width="300"
+                  height="200"
+                />
+              </div>
+              
+              <!-- Content -->
+              <div class="sm:w-[60%] p-6">
+                <h3 class="text-[22px] font-bold text-primary mb-3">{service.title}</h3>
+                <p class="text-muted text-sm leading-relaxed mb-4">{service.description}</p>
+                
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {service.items.map(item => (
+                    <span class="bg-surface text-primary text-xs px-3 py-1 rounded">{item}</span>
+                  ))}
+                </div>
+                
+                <a href="/contact" class="inline-flex items-center gap-1 text-accent text-sm font-medium hover:gap-2 transition-all duration-200">
+                  立即預約
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  
+  <Footer />
+</Layout>
+
+<script>
+  const serviceObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-6');
+        }, index * 100);
+        serviceObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.classList.add('opacity-0', 'translate-y-6', 'transition-all', 'duration-500');
+    serviceObserver.observe(card);
+  });
+</script>
