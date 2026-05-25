@@ -1,0 +1,59 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import CTA from '@/components/CTA.astro';
+
+const title = '搬家攻略 | 專業搬家知識分享 | 9458專業搬家';
+const description = '9458專業搬家為您提供專業的搬家知識與攻略，包含搬家前準備、打包技巧、費用說明、各區域搬家須知等實用資訊。';
+---
+
+<Layout title={title} description={description}>
+  <Header />
+
+  <main>
+    <!-- Page Header -->
+    <section class="bg-primary pt-16 pb-20 relative overflow-hidden">
+      <div class="absolute bottom-0 right-0 w-64 h-32 opacity-20">
+        <svg viewBox="0 0 256 128" fill="none" class="w-full h-full">
+          <path d="M0,64 C40,20 80,100 128,64 C176,28 216,108 256,64" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="container-main relative z-10">
+        <nav class="text-white/60 text-sm mb-4">
+          <a href="/" class="hover:text-white transition-colors">首頁</a>
+          <span class="mx-2">&gt;</span>
+          <span>搬家攻略</span>
+        </nav>
+        <h1 class="text-white text-3xl lg:text-4xl font-bold">搬家攻略</h1>
+        <p class="text-white/70 mt-3 max-w-xl">
+          專業搬家知識與實用技巧分享，讓您的搬遷過程更順利。
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog List (Empty) -->
+    <section class="py-20 bg-white">
+      <div class="container-main">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogGrid">
+          <!-- Articles will be added here -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="text-center py-20" id="emptyState">
+          <div class="w-16 h-16 bg-surface rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+            </svg>
+          </div>
+          <p class="text-muted text-lg mb-2">文章即將上架</p>
+          <p class="text-muted text-sm">敬請期待專業搬家知識分享</p>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</Layout>
