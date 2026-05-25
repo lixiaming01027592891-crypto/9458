@@ -38,18 +38,13 @@
         台南在地專業搬家團隊，年輕有效率，價格公道透明。免費到府估價，簽約保障，讓您的每一次搬遷都安心無憂。
       </p>
       
-      <!-- CTA Buttons -->
-      <div class="flex flex-wrap gap-4">
-        <a href="/contact" class="btn-primary">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-          </svg>
-          立即預約免費估價
-        </a>
-        <a href="/services" class="btn-secondary">
-          觀看我們的服務
-        </a>
-      </div>
+      <!-- CTA Button -->
+      <a href="/contact" class="hero-cta-btn">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        立即預約免費估價
+      </a>
     </div>
 
     <!-- Right Image Area -->
@@ -112,5 +107,32 @@
   
   @keyframes slideInRight {
     to { opacity: 1; transform: translateX(0); }
+  }
+
+  .hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #FF7A00;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 1rem 2.25rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(255, 122, 0, 0.35), 0 0 60px rgba(255, 122, 0, 0.12);
+    animation: ctaPulse 3s ease-in-out infinite;
+    transition: all 0.2s ease;
+  }
+
+  .hero-cta-btn:hover {
+    filter: brightness(1.12);
+    transform: scale(1.03);
+    box-shadow: 0 6px 28px rgba(255, 122, 0, 0.45), 0 0 80px rgba(255, 122, 0, 0.18);
+  }
+
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(255, 122, 0, 0.35), 0 0 60px rgba(255, 122, 0, 0.12); }
+    50% { box-shadow: 0 4px 24px rgba(255, 122, 0, 0.45), 0 0 80px rgba(255, 122, 0, 0.18); }
   }
 </style>
