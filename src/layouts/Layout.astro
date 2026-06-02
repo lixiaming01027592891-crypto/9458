@@ -9,7 +9,7 @@ const {
   description = "9458專業搬家 - 台南在地專業搬家公司，年輕團隊、價格公道、服務細心。提供住宅搬家、商業搬遷、特殊物品搬運等服務。24小時營業，免費到府估價。"
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://9458moving.com');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://9458moving.net');
 ---
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://9458movi
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:locale" content="zh_TW" />
-  <meta property="og:image" content="https://9458moving.com/images/og-image.jpg" />
+  <meta property="og:image" content="https://9458moving.net/images/og-image.jpg" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -47,7 +47,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://9458movi
     "@type": "MovingCompany",
     "name": "9458專業搬家",
     "description": description,
-    "url": "https://9458moving.com",
+    "url": "https://9458moving.net",
     "telephone": "+886-977-184-903",
     "email": "",
     "address": {
