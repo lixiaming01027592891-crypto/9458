@@ -16,9 +16,42 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const { title, description, publishDate, readTime, coverImage, coverAlt, tags } = post.data;
+
+// Related posts: filter out current post, pick up to 2 random posts
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter((p) => p.slug !== post.slug)
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 2);
 ---
 
 <Layout title={`${title} | 9458專業搬家`} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://9458moving.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "搬家攻略",
+          "item": "https://9458moving.net/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": title,
+          "item": `https://9458moving.net/blog/${post.slug}/`
+        }
+      ]
+    })} />
+  </Fragment>
   <Header />
 
   <main>
@@ -90,6 +123,35 @@ const { title, description, publishDate, readTime, coverImage, coverAlt, tags } 
             </div>
           </div>
         </div>
+
+        <!-- Related Posts -->
+        {relatedPosts.length > 0 && (
+          <div class="mt-10 pt-8 border-t border-border">
+            <h3 class="text-lg font-bold text-primary mb-5">你可能也感興趣</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedPosts.map((rp) => (
+                <a href={`/blog/${rp.slug}/`} class="group flex gap-4 bg-surface rounded-lg p-4 hover:bg-white hover:shadow-md transition-all duration-300">
+                  {rp.data.coverImage && (
+                    <img 
+                      src={rp.data.coverImage} 
+                      alt={rp.data.coverAlt || rp.data.title}
+                      class="w-20 h-20 rounded object-cover flex-shrink-0"
+                      loading="lazy"
+                      width="80"
+                      height="80"
+                    />
+                  )}
+                  <div>
+                    <p class="text-sm font-bold text-primary group-hover:text-accent transition-colors line-clamp-2">
+                      {rp.data.title}
+                    </p>
+                    <p class="text-xs text-muted mt-1">{rp.data.readTime}閱讀</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
 
         <!-- CTA -->
         <div class="mt-10 p-8 bg-primary rounded-lg text-center">

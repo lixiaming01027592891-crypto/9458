@@ -94,6 +94,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://9458movi
   <title>{title}</title>
   
   <link rel="stylesheet" href="/src/styles/global.css" />
+  <slot name="head" />
 </head>
 <body class="bg-white">
   <slot />

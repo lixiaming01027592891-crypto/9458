@@ -1,0 +1,38 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const title = '找不到頁面 | 9458專業搬家';
+const description = '您要找的頁面不存在，歡迎返回 9458專業搬家首頁瀏覽我們的搬家服務。';
+---
+
+<Layout title={title} description={description}>
+  <Header />
+
+  <main class="min-h-[60vh] flex items-center justify-center">
+    <div class="text-center px-6">
+      <h1 class="text-primary text-8xl font-bold mb-4">404</h1>
+      <p class="text-2xl text-primary font-bold mb-3">找不到這個頁面</p>
+      <p class="text-muted mb-8 max-w-md mx-auto">
+        您要找的頁面可能已經被移動或刪除。歡迎返回首頁，或瀏覽我們的搬家服務。
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/" class="inline-flex items-center gap-2 bg-accent text-white font-medium px-6 py-3 rounded hover:brightness-110 transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          返回首頁
+        </a>
+        <a href="/services" class="inline-flex items-center gap-2 bg-white text-primary font-medium px-6 py-3 rounded border border-border hover:border-primary transition-all">
+          服務項目
+        </a>
+        <a href="/contact" class="inline-flex items-center gap-2 bg-white text-primary font-medium px-6 py-3 rounded border border-border hover:border-primary transition-all">
+          聯絡我們
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
