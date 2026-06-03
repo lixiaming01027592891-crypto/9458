@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import CTA from '@/components/CTA.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, description, publishDate, readTime, coverImage, coverAlt, tags } = post.data;
+---
+
+<Layout title={`${title} | 9458專業搬家`} description={description}>
+  <Header />
+
+  <main>
+    <!-- Article Header -->
+    <section class="bg-primary pt-16 pb-12 relative overflow-hidden">
+      <div class="absolute bottom-0 right-0 w-64 h-32 opacity-20">
+        <svg viewBox="0 0 256 128" fill="none" class="w-full h-full">
+          <path d="M0,64 C40,20 80,100 128,64 C176,28 216,108 256,64" stroke="white" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="container-main relative z-10">
+        <nav class="text-white/60 text-sm mb-4">
+          <a href="/" class="hover:text-white transition-colors">首頁</a>
+          <span class="mx-2">&gt;</span>
+          <a href="/blog" class="hover:text-white transition-colors">搬家攻略</a>
+          <span class="mx-2">&gt;</span>
+          <span class="text-white/80">{title}</span>
+        </nav>
+        <h1 class="text-white text-2xl lg:text-4xl font-bold leading-tight max-w-3xl">
+          {title}
+        </h1>
+        <div class="flex items-center gap-4 mt-4 text-white/60 text-sm">
+          <span>{publishDate}</span>
+          <span>|</span>
+          <span>閱讀時間約 {readTime}</span>
+          <span>|</span>
+          <span>9458專業搬家</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="py-16 bg-white">
+      <div class="container-main max-w-3xl">
+
+        <!-- Cover Image -->
+        {coverImage && (
+          <img 
+            src={coverImage} 
+            alt={coverAlt || title}
+            class="w-full rounded-lg mb-10 aspect-video object-cover"
+            loading="eager"
+            width="900"
+            height="506"
+          />
+        )}
+
+        <!-- Article Body (Markdown) -->
+        <div class="prose-content">
+          <Content />
+        </div>
+
+        <!-- Tags -->
+        {tags && tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-10 pt-8 border-t border-border">
+            {tags.map((tag) => (
+              <span class="bg-surface text-primary text-sm px-4 py-2 rounded-full">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <!-- Author -->
+        <div class="mt-10 p-6 bg-surface rounded-lg">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0">94</div>
+            <div>
+              <p class="font-bold text-primary">9458專業搬家</p>
+              <p class="text-muted text-sm">台南在地專業搬家公司，提供住宅搬家、商業搬遷、特殊物品搬運等服務。免費到府估價，歡迎諮詢。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-10 p-8 bg-primary rounded-lg text-center">
+          <h3 class="text-white text-xl font-bold mb-3">準備搬家了嗎？</h3>
+          <p class="text-white/70 mb-6">立即聯繫 9458 專業搬家，免費為您到府估價，規劃最適合的搬家方案。</p>
+          <a href="/contact" class="inline-flex items-center gap-2 bg-accent text-white font-medium px-8 py-3 rounded hover:brightness-110 transition-all">
+            免費諮詢與估價
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .prose-content :global(h2) { @apply text-2xl font-bold text-primary mt-12 mb-5; }
+  .prose-content :global(h3) { @apply text-xl font-bold text-primary mt-8 mb-4; }
+  .prose-content :global(p) { @apply text-muted leading-[1.8] mb-5; }
+  .prose-content :global(img) { @apply rounded-lg my-8; }
+  .prose-content :global(.lead) { @apply text-lg; }
+</style>

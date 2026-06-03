@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
@@ -6,6 +7,10 @@ import CTA from '@/components/CTA.astro';
 
 const title = '搬家攻略 | 專業搬家知識分享 | 9458專業搬家';
 const description = '9458專業搬家為您提供專業的搬家知識與攻略，包含搬家前準備、打包技巧、費用說明、各區域搬家須知等實用資訊。';
+
+const posts = await getCollection('blog');
+// Sort by publishDate descending
+posts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 ---
 
 <Layout title={title} description={description}>
@@ -36,86 +41,35 @@ const description = '9458專業搬家為您提供專業的搬家知識與攻略�
     <section class="py-20 bg-white">
       <div class="container-main">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogGrid">
-          <!-- Article Card 1 -->
-          <a href="/blog/台南搬家完整攻略" class="group bg-white border border-border rounded-lg overflow-hidden hover:border-primary hover:shadow-lg transition-all duration-300">
-            <div class="aspect-video overflow-hidden">
-              <img 
-                src="/images/blog-cover-packing.jpg" 
-                alt="台南搬家完整攻略封面圖"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="400"
-                height="225"
-              />
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 text-xs text-muted mb-3">
-                <span>2026-05-26</span>
-                <span>|</span>
-                <span>8 分鐘閱讀</span>
+          {posts.map((post) => (
+            <a href={`/blog/${post.slug}/`} class="group bg-white border border-border rounded-lg overflow-hidden hover:border-primary hover:shadow-lg transition-all duration-300">
+              {post.data.coverImage && (
+                <div class="aspect-video overflow-hidden">
+                  <img 
+                    src={post.data.coverImage} 
+                    alt={post.data.coverAlt || post.data.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    width="400"
+                    height="225"
+                  />
+                </div>
+              )}
+              <div class="p-6">
+                <div class="flex items-center gap-3 text-xs text-muted mb-3">
+                  <span>{post.data.publishDate}</span>
+                  <span>|</span>
+                  <span>{post.data.readTime}閱讀</span>
+                </div>
+                <h2 class="text-lg font-bold text-primary group-hover:text-accent transition-colors mb-3 line-clamp-2">
+                  {post.data.title}
+                </h2>
+                <p class="text-muted text-sm line-clamp-3">
+                  {post.data.description}
+                </p>
               </div>
-              <h2 class="text-lg font-bold text-primary group-hover:text-accent transition-colors mb-3 line-clamp-2">
-                台南搬家完整攻略：從打包到入住的10個必知步驟
-              </h2>
-              <p class="text-muted text-sm line-clamp-3">
-                台南搬家前必看完整攻略！從搬家前的規劃準備、慎選搬家公司、系統化打包技巧到入住新居後的整理順序，9458專業搬家為您詳細解析每一個關鍵步驟...
-              </p>
-            </div>
-          </a>
-
-          <!-- Article Card 2 -->
-          <a href="/blog/tainan-moving" class="group bg-white border border-border rounded-lg overflow-hidden hover:border-primary hover:shadow-lg transition-all duration-300">
-            <div class="aspect-video overflow-hidden">
-              <img 
-                src="/images/blog-moving-estimate.jpg" 
-                alt="台南搬家公司推薦選擇與搬家費用評估"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="400"
-                height="225"
-              />
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 text-xs text-muted mb-3">
-                <span>2026-06-02</span>
-                <span>|</span>
-                <span>10 分鐘閱讀</span>
-              </div>
-              <h2 class="text-lg font-bold text-primary group-hover:text-accent transition-colors mb-3 line-clamp-2">
-                台南搬家推薦怎麼選？搬家流程、費用影響因素與估價前準備
-              </h2>
-              <p class="text-muted text-sm line-clamp-3">
-                台南搬家前必看！為您解析台南搬家公司推薦的選擇重點、搬家費用影響因素、完整搬家流程，以及估價前的準備事項，讓您安心搬遷不踩雷...
-              </p>
-            </div>
-          </a>
-
-          <!-- Article Card 3 -->
-          <a href="/blog/anping-moving" class="group bg-white border border-border rounded-lg overflow-hidden hover:border-primary hover:shadow-lg transition-all duration-300">
-            <div class="aspect-video overflow-hidden">
-              <img 
-                src="/images/blog-anping-stairs.jpg" 
-                alt="安平區老公寓樓梯搬運情境"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                width="400"
-                height="225"
-              />
-            </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 text-xs text-muted mb-3">
-                <span>2026-06-02</span>
-                <span>|</span>
-                <span>11 分鐘閱讀</span>
-              </div>
-              <h2 class="text-lg font-bold text-primary group-hover:text-accent transition-colors mb-3 line-clamp-2">
-                安平區搬家注意事項｜電梯大樓、公寓、透天厝與租屋族搬家指南
-              </h2>
-              <p class="text-muted text-sm line-clamp-3">
-                安平搬家前必看！整理安平區電梯大樓、老公寓、透天厝的搬家注意事項，無論是租屋族、小家庭還是學生搬家，都能找到適合的安平搬家公司服務...
-              </p>
-            </div>
-          </a>
+            </a>
+          ))}
         </div>
       </div>
     </section>
