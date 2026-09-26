@@ -4,11 +4,11 @@ slug: "tainan-moving-tall-bookcase-shelves-glass-door-20260926"
 description: "高書櫃搬家前先量尺寸、清空書本、記錄可拆層板與玻璃門，再核對兩端動線及新家固定方式。"
 publishDate: "2026-09-26"
 readTime: "7 分鐘"
-coverImage: "/images/articles/20260926/9458.png"
+coverImage: "/images/articles/20260926/9458.webp"
 coverAlt: "搬家人員量測高書櫃與住家門口"
 tags: ["台南搬家公司","搬家準備"]
 keywords: "台南搬家公司, 搬家準備"
-ogImage: "/images/articles/20260926/9458.png"
+ogImage: "/images/articles/20260926/9458.webp"
 ---
 
 高書櫃看起來只是大型家具，實際搬遷時常同時牽涉滿櫃書本、活動層板、玻璃門與新家的牆面位置。委託台南搬家公司前，屋主最好先確認櫃子是整件搬、部分拆裝，還是根本無法通過樓梯。舊家能放進去，不代表新家的電梯、走廊與房門都有相同餘裕。若等搬運當天才把書拿出來、尋找螺絲或討論是否鑽牆固定，時間和費用都可能改變。以下把這些決策拆開，讓詢價與現場交接有同一份依據。
